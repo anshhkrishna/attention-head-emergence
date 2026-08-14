@@ -1,0 +1,39 @@
+chance accuracy: 1/12 = 0.0833
+2-layer model: model_seed=100 train_rng_seed=201 num_steps=500 batch_size=64 lr=0.01
+checkpoint every 20 steps, probe_seed=2
+
+step    0/500  induction(coincidental)=0.0797  induction(fixed_offset)=0.0813  non_induction=0.0787  (chance=0.0833)
+    step    1/500  loss=2.5586
+step   20/500  induction(coincidental)=0.0982  induction(fixed_offset)=0.1322  non_induction=0.0822  (chance=0.0833)
+step   40/500  induction(coincidental)=0.1442  induction(fixed_offset)=0.1821  non_induction=0.0912  (chance=0.0833)
+step   60/500  induction(coincidental)=0.1840  induction(fixed_offset)=0.3115  non_induction=0.1065  (chance=0.0833)
+step   80/500  induction(coincidental)=0.1838  induction(fixed_offset)=0.6322  non_induction=0.1036  (chance=0.0833)
+    step  100/500  loss=1.5130
+step  100/500  induction(coincidental)=0.1847  induction(fixed_offset)=0.9774  non_induction=0.1063  (chance=0.0833)
+step  120/500  induction(coincidental)=0.1847  induction(fixed_offset)=0.9997  non_induction=0.1066  (chance=0.0833)
+step  140/500  induction(coincidental)=0.1818  induction(fixed_offset)=1.0000  non_induction=0.1057  (chance=0.0833)
+step  160/500  induction(coincidental)=0.1793  induction(fixed_offset)=1.0000  non_induction=0.1043  (chance=0.0833)
+step  180/500  induction(coincidental)=0.1817  induction(fixed_offset)=0.9999  non_induction=0.1044  (chance=0.0833)
+    step  200/500  loss=1.2820
+step  200/500  induction(coincidental)=0.1798  induction(fixed_offset)=1.0000  non_induction=0.1033  (chance=0.0833)
+step  220/500  induction(coincidental)=0.1805  induction(fixed_offset)=1.0000  non_induction=0.1058  (chance=0.0833)
+step  240/500  induction(coincidental)=0.1822  induction(fixed_offset)=0.9999  non_induction=0.1075  (chance=0.0833)
+step  260/500  induction(coincidental)=0.1811  induction(fixed_offset)=1.0000  non_induction=0.1084  (chance=0.0833)
+step  280/500  induction(coincidental)=0.1864  induction(fixed_offset)=0.9994  non_induction=0.1038  (chance=0.0833)
+    step  300/500  loss=1.2589
+step  300/500  induction(coincidental)=0.1783  induction(fixed_offset)=1.0000  non_induction=0.0999  (chance=0.0833)
+step  320/500  induction(coincidental)=0.1849  induction(fixed_offset)=1.0000  non_induction=0.1026  (chance=0.0833)
+step  340/500  induction(coincidental)=0.1780  induction(fixed_offset)=1.0000  non_induction=0.1065  (chance=0.0833)
+step  360/500  induction(coincidental)=0.1794  induction(fixed_offset)=1.0000  non_induction=0.1038  (chance=0.0833)
+step  380/500  induction(coincidental)=0.1824  induction(fixed_offset)=0.9993  non_induction=0.1062  (chance=0.0833)
+    step  400/500  loss=1.2500
+step  400/500  induction(coincidental)=0.1784  induction(fixed_offset)=1.0000  non_induction=0.1073  (chance=0.0833)
+step  420/500  induction(coincidental)=0.1801  induction(fixed_offset)=1.0000  non_induction=0.1045  (chance=0.0833)
+step  440/500  induction(coincidental)=0.1791  induction(fixed_offset)=1.0000  non_induction=0.1062  (chance=0.0833)
+step  460/500  induction(coincidental)=0.1847  induction(fixed_offset)=1.0000  non_induction=0.1062  (chance=0.0833)
+step  480/500  induction(coincidental)=0.1795  induction(fixed_offset)=0.9994  non_induction=0.1101  (chance=0.0833)
+    step  500/500  loss=1.2383
+step  500/500  induction(coincidental)=0.1787  induction(fixed_offset)=1.0000  non_induction=0.1109  (chance=0.0833)
+
+wall time: 16.1s for 500 steps
+saved 26 checkpoints to results/attention_checkpoints.npz
