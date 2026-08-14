@@ -1,0 +1,22 @@
+chance accuracy: 1/12 = 0.0833
+eval batch: 1024 sequences, seed=1
+note: the second half of every sequence is an exact repeat of the first, so 'induction accuracy' as usually defined lumps together positions solvable by a fixed HALF_LEN positional offset (no content matching needed) with positions that repeat by chance at no fixed offset (the actual test of content-based induction). Both are reported separately below.
+
+baseline A: 2-layer model at random initialization (untrained)
+  induction accuracy (lumped):        0.0808
+  induction accuracy (fixed-offset):  0.0813  (solvable by pure position-based attention, no content matching)
+  induction accuracy (coincidental):  0.0797  (no positional shortcut -- the actual induction test)
+  non-induction accuracy:             0.0787  (expect ~0.0833)
+
+baseline B: 1-layer model, trained 500 steps, batch 64
+  model_seed=100 train_rng_seed=200 lr=0.01
+    step    1/500  loss=2.5104
+    step  100/500  loss=1.4006
+    step  200/500  loss=1.3265
+    step  300/500  loss=1.2891
+    step  400/500  loss=1.3004
+    step  500/500  loss=1.2865
+  induction accuracy (lumped):        0.7393
+  induction accuracy (fixed-offset):  1.0000  (solvable by pure position-based attention, no content matching)
+  induction accuracy (coincidental):  0.1777  (no positional shortcut -- the actual induction test)
+  non-induction accuracy:             0.1092  (expect ~0.0833)
