@@ -1,0 +1,196 @@
+chance accuracy: 1/12 = 0.0833
+seeds: [(110, 310), (111, 311), (112, 312), (113, 313), (114, 314)]
+num_train_steps=500 batch_size=64 lr=0.01
+
+=== seed model=110 train=310 ===
+    step    0/500  induction(coincidental)=0.0865  induction(fixed_offset)=0.0868
+    step    1/500  loss=2.5530
+    step   20/500  induction(coincidental)=0.1125  induction(fixed_offset)=0.1396
+    step   40/500  induction(coincidental)=0.1777  induction(fixed_offset)=0.1645
+    step   60/500  induction(coincidental)=0.1836  induction(fixed_offset)=0.3656
+    step   80/500  induction(coincidental)=0.1850  induction(fixed_offset)=0.7393
+    step  100/500  loss=1.6428
+    step  100/500  induction(coincidental)=0.1853  induction(fixed_offset)=0.8937
+    step  120/500  induction(coincidental)=0.1888  induction(fixed_offset)=0.9426
+    step  140/500  induction(coincidental)=0.1847  induction(fixed_offset)=0.9986
+    step  160/500  induction(coincidental)=0.1800  induction(fixed_offset)=1.0000
+    step  180/500  induction(coincidental)=0.1840  induction(fixed_offset)=1.0000
+    step  200/500  loss=1.2411
+    step  200/500  induction(coincidental)=0.1781  induction(fixed_offset)=0.9998
+    step  220/500  induction(coincidental)=0.1829  induction(fixed_offset)=1.0000
+    step  240/500  induction(coincidental)=0.1756  induction(fixed_offset)=1.0000
+    step  260/500  induction(coincidental)=0.1763  induction(fixed_offset)=1.0000
+    step  280/500  induction(coincidental)=0.1745  induction(fixed_offset)=1.0000
+    step  300/500  loss=1.2386
+    step  300/500  induction(coincidental)=0.1779  induction(fixed_offset)=1.0000
+    step  320/500  induction(coincidental)=0.1860  induction(fixed_offset)=1.0000
+    step  340/500  induction(coincidental)=0.1824  induction(fixed_offset)=1.0000
+    step  360/500  induction(coincidental)=0.1831  induction(fixed_offset)=1.0000
+    step  380/500  induction(coincidental)=0.1829  induction(fixed_offset)=1.0000
+    step  400/500  loss=1.2389
+    step  400/500  induction(coincidental)=0.1770  induction(fixed_offset)=1.0000
+    step  420/500  induction(coincidental)=0.1794  induction(fixed_offset)=1.0000
+    step  440/500  induction(coincidental)=0.1878  induction(fixed_offset)=1.0000
+    step  460/500  induction(coincidental)=0.1769  induction(fixed_offset)=1.0000
+    step  480/500  induction(coincidental)=0.1814  induction(fixed_offset)=1.0000
+    step  500/500  loss=1.2189
+    step  500/500  induction(coincidental)=0.1800  induction(fixed_offset)=1.0000
+  final coincidental accuracy: 0.1800
+  transition step (halfway chance->final): 40
+
+=== seed model=111 train=311 ===
+    step    0/500  induction(coincidental)=0.0840  induction(fixed_offset)=0.0779
+    step    1/500  loss=2.5369
+    step   20/500  induction(coincidental)=0.1000  induction(fixed_offset)=0.1258
+    step   40/500  induction(coincidental)=0.1185  induction(fixed_offset)=0.1583
+    step   60/500  induction(coincidental)=0.1672  induction(fixed_offset)=0.2693
+    step   80/500  induction(coincidental)=0.1860  induction(fixed_offset)=0.6635
+    step  100/500  loss=1.7446
+    step  100/500  induction(coincidental)=0.1850  induction(fixed_offset)=0.7751
+    step  120/500  induction(coincidental)=0.1873  induction(fixed_offset)=0.9634
+    step  140/500  induction(coincidental)=0.1840  induction(fixed_offset)=1.0000
+    step  160/500  induction(coincidental)=0.1832  induction(fixed_offset)=1.0000
+    step  180/500  induction(coincidental)=0.1852  induction(fixed_offset)=1.0000
+    step  200/500  loss=1.3192
+    step  200/500  induction(coincidental)=0.1845  induction(fixed_offset)=1.0000
+    step  220/500  induction(coincidental)=0.1842  induction(fixed_offset)=1.0000
+    step  240/500  induction(coincidental)=0.1821  induction(fixed_offset)=0.9995
+    step  260/500  induction(coincidental)=0.1812  induction(fixed_offset)=1.0000
+    step  280/500  induction(coincidental)=0.1794  induction(fixed_offset)=1.0000
+    step  300/500  loss=1.2582
+    step  300/500  induction(coincidental)=0.1847  induction(fixed_offset)=0.9998
+    step  320/500  induction(coincidental)=0.1800  induction(fixed_offset)=1.0000
+    step  340/500  induction(coincidental)=0.1795  induction(fixed_offset)=0.9995
+    step  360/500  induction(coincidental)=0.1805  induction(fixed_offset)=1.0000
+    step  380/500  induction(coincidental)=0.1859  induction(fixed_offset)=0.9998
+    step  400/500  loss=1.2460
+    step  400/500  induction(coincidental)=0.1852  induction(fixed_offset)=0.9993
+    step  420/500  induction(coincidental)=0.1790  induction(fixed_offset)=0.9996
+    step  440/500  induction(coincidental)=0.1824  induction(fixed_offset)=1.0000
+    step  460/500  induction(coincidental)=0.1861  induction(fixed_offset)=1.0000
+    step  480/500  induction(coincidental)=0.1801  induction(fixed_offset)=0.9996
+    step  500/500  loss=1.2422
+    step  500/500  induction(coincidental)=0.1843  induction(fixed_offset)=0.9990
+  final coincidental accuracy: 0.1843
+  transition step (halfway chance->final): 60
+
+=== seed model=112 train=312 ===
+    step    0/500  induction(coincidental)=0.0830  induction(fixed_offset)=0.0817
+    step    1/500  loss=2.5660
+    step   20/500  induction(coincidental)=0.1013  induction(fixed_offset)=0.1332
+    step   40/500  induction(coincidental)=0.1648  induction(fixed_offset)=0.1681
+    step   60/500  induction(coincidental)=0.1829  induction(fixed_offset)=0.3951
+    step   80/500  induction(coincidental)=0.1780  induction(fixed_offset)=0.6063
+    step  100/500  loss=1.6290
+    step  100/500  induction(coincidental)=0.1828  induction(fixed_offset)=0.9242
+    step  120/500  induction(coincidental)=0.1807  induction(fixed_offset)=0.9431
+    step  140/500  induction(coincidental)=0.1801  induction(fixed_offset)=0.9746
+    step  160/500  induction(coincidental)=0.1791  induction(fixed_offset)=1.0000
+    step  180/500  induction(coincidental)=0.1748  induction(fixed_offset)=1.0000
+    step  200/500  loss=1.2823
+    step  200/500  induction(coincidental)=0.1790  induction(fixed_offset)=0.9999
+    step  220/500  induction(coincidental)=0.1716  induction(fixed_offset)=0.9997
+    step  240/500  induction(coincidental)=0.1738  induction(fixed_offset)=1.0000
+    step  260/500  induction(coincidental)=0.1801  induction(fixed_offset)=0.9999
+    step  280/500  induction(coincidental)=0.1791  induction(fixed_offset)=0.9999
+    step  300/500  loss=1.2412
+    step  300/500  induction(coincidental)=0.1819  induction(fixed_offset)=1.0000
+    step  320/500  induction(coincidental)=0.1797  induction(fixed_offset)=1.0000
+    step  340/500  induction(coincidental)=0.1805  induction(fixed_offset)=1.0000
+    step  360/500  induction(coincidental)=0.1805  induction(fixed_offset)=1.0000
+    step  380/500  induction(coincidental)=0.1781  induction(fixed_offset)=1.0000
+    step  400/500  loss=1.2275
+    step  400/500  induction(coincidental)=0.1829  induction(fixed_offset)=1.0000
+    step  420/500  induction(coincidental)=0.1832  induction(fixed_offset)=1.0000
+    step  440/500  induction(coincidental)=0.1739  induction(fixed_offset)=1.0000
+    step  460/500  induction(coincidental)=0.1786  induction(fixed_offset)=1.0000
+    step  480/500  induction(coincidental)=0.1787  induction(fixed_offset)=1.0000
+    step  500/500  loss=1.2237
+    step  500/500  induction(coincidental)=0.1819  induction(fixed_offset)=1.0000
+  final coincidental accuracy: 0.1819
+  transition step (halfway chance->final): 40
+
+=== seed model=113 train=313 ===
+    step    0/500  induction(coincidental)=0.0840  induction(fixed_offset)=0.0801
+    step    1/500  loss=2.5673
+    step   20/500  induction(coincidental)=0.1041  induction(fixed_offset)=0.1365
+    step   40/500  induction(coincidental)=0.1212  induction(fixed_offset)=0.1810
+    step   60/500  induction(coincidental)=0.1833  induction(fixed_offset)=0.2560
+    step   80/500  induction(coincidental)=0.1795  induction(fixed_offset)=0.3580
+    step  100/500  loss=1.9318
+    step  100/500  induction(coincidental)=0.1831  induction(fixed_offset)=0.7092
+    step  120/500  induction(coincidental)=0.1800  induction(fixed_offset)=0.9999
+    step  140/500  induction(coincidental)=0.1815  induction(fixed_offset)=1.0000
+    step  160/500  induction(coincidental)=0.1814  induction(fixed_offset)=1.0000
+    step  180/500  induction(coincidental)=0.1843  induction(fixed_offset)=1.0000
+    step  200/500  loss=1.3204
+    step  200/500  induction(coincidental)=0.1867  induction(fixed_offset)=1.0000
+    step  220/500  induction(coincidental)=0.1849  induction(fixed_offset)=1.0000
+    step  240/500  induction(coincidental)=0.1864  induction(fixed_offset)=1.0000
+    step  260/500  induction(coincidental)=0.1810  induction(fixed_offset)=0.9997
+    step  280/500  induction(coincidental)=0.1777  induction(fixed_offset)=0.9993
+    step  300/500  loss=1.2544
+    step  300/500  induction(coincidental)=0.1840  induction(fixed_offset)=0.9998
+    step  320/500  induction(coincidental)=0.1818  induction(fixed_offset)=0.9998
+    step  340/500  induction(coincidental)=0.1829  induction(fixed_offset)=0.9993
+    step  360/500  induction(coincidental)=0.1856  induction(fixed_offset)=1.0000
+    step  380/500  induction(coincidental)=0.1856  induction(fixed_offset)=0.9997
+    step  400/500  loss=1.2440
+    step  400/500  induction(coincidental)=0.1807  induction(fixed_offset)=1.0000
+    step  420/500  induction(coincidental)=0.1822  induction(fixed_offset)=0.9997
+    step  440/500  induction(coincidental)=0.1802  induction(fixed_offset)=0.9997
+    step  460/500  induction(coincidental)=0.1814  induction(fixed_offset)=0.9988
+    step  480/500  induction(coincidental)=0.1808  induction(fixed_offset)=0.9999
+    step  500/500  loss=1.2454
+    step  500/500  induction(coincidental)=0.1852  induction(fixed_offset)=0.9990
+  final coincidental accuracy: 0.1852
+  transition step (halfway chance->final): 60
+
+=== seed model=114 train=314 ===
+    step    0/500  induction(coincidental)=0.0750  induction(fixed_offset)=0.0817
+    step    1/500  loss=2.5413
+    step   20/500  induction(coincidental)=0.1009  induction(fixed_offset)=0.1257
+    step   40/500  induction(coincidental)=0.1783  induction(fixed_offset)=0.1644
+    step   60/500  induction(coincidental)=0.1810  induction(fixed_offset)=0.2923
+    step   80/500  induction(coincidental)=0.1843  induction(fixed_offset)=0.5911
+    step  100/500  loss=1.6290
+    step  100/500  induction(coincidental)=0.1784  induction(fixed_offset)=0.8540
+    step  120/500  induction(coincidental)=0.1835  induction(fixed_offset)=0.9784
+    step  140/500  induction(coincidental)=0.1745  induction(fixed_offset)=0.9999
+    step  160/500  induction(coincidental)=0.1779  induction(fixed_offset)=0.9999
+    step  180/500  induction(coincidental)=0.1811  induction(fixed_offset)=1.0000
+    step  200/500  loss=1.2563
+    step  200/500  induction(coincidental)=0.1769  induction(fixed_offset)=1.0000
+    step  220/500  induction(coincidental)=0.1842  induction(fixed_offset)=1.0000
+    step  240/500  induction(coincidental)=0.1815  induction(fixed_offset)=1.0000
+    step  260/500  induction(coincidental)=0.1777  induction(fixed_offset)=1.0000
+    step  280/500  induction(coincidental)=0.1756  induction(fixed_offset)=1.0000
+    step  300/500  loss=1.2390
+    step  300/500  induction(coincidental)=0.1777  induction(fixed_offset)=1.0000
+    step  320/500  induction(coincidental)=0.1802  induction(fixed_offset)=1.0000
+    step  340/500  induction(coincidental)=0.1763  induction(fixed_offset)=1.0000
+    step  360/500  induction(coincidental)=0.1769  induction(fixed_offset)=1.0000
+    step  380/500  induction(coincidental)=0.1835  induction(fixed_offset)=1.0000
+    step  400/500  loss=1.2139
+    step  400/500  induction(coincidental)=0.1815  induction(fixed_offset)=1.0000
+    step  420/500  induction(coincidental)=0.1784  induction(fixed_offset)=1.0000
+    step  440/500  induction(coincidental)=0.1753  induction(fixed_offset)=1.0000
+    step  460/500  induction(coincidental)=0.1756  induction(fixed_offset)=1.0000
+    step  480/500  induction(coincidental)=0.1833  induction(fixed_offset)=1.0000
+    step  500/500  loss=1.2185
+    step  500/500  induction(coincidental)=0.1738  induction(fixed_offset)=1.0000
+  final coincidental accuracy: 0.1738
+  transition step (halfway chance->final): 40
+
+=== summary across seeds ===
+final coincidental accuracy: mean=0.1810 std=0.0041 n_seeds=5
+seeds above chance (0.0833): 5/5
+seeds above trained 1-layer baseline (0.1777): 4/5
+transition steps: [40, 60, 40, 60, 40]
+
+core_claim: coincidental induction above chance is reliable across seeds (5/5)
+core_claim: coincidental induction above the trained 1-layer baseline is not reliable across seeds (4/5)
+
+=== leakage check ===
+checked 160000 training-batch rows across 5 seeds against the EVAL_SEED=1 held-out batch
+leakage_check: collisions=0 -> CLEAN
