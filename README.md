@@ -46,16 +46,17 @@ Neither the abrupt jump nor the composition advantage shows up.
   other.
 - **Both attention layers converge to the same fixed-offset pattern the 1-layer
   baseline already learns**, rather than composing into a distinct induction circuit.
-  This is visible in `results/headline.gif`: after 500 training steps, layer 1 and layer 2 both show
-  an identical diagonal band at a 16-token offset, matching the 1-layer baseline's own
-  attention pattern almost exactly, even though the model separately solves the
-  fixed-offset version of the task to near 100% (`results/run.log`).
+  This is visible in `results/headline.gif`: after 500 training steps, layer 1 and
+  layer 2 both show an identical diagonal band at a 16-token offset, matching the
+  1-layer baseline's own attention pattern almost exactly, even though the model
+  separately solves the fixed-offset version of the task to near 100%
+  (`results/run.log`).
 - A leakage check confirmed the held-out evaluation batch never appears in any training
   batch across any seed (0 collisions in 160,000 rows checked, `results/rigor.log` line
   196), so this is not an artifact of train/eval overlap.
 
-Full reasoning and the honest caveats (in particular, what this result does and does
-not rule out about induction heads at larger scale) are in `results/FINDING.md`.
+Full reasoning and the honest caveats, in particular what this result does and does
+not rule out about induction heads at larger scale, are in `results/FINDING.md`.
 
 ## Repo layout
 
