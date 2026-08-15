@@ -1,10 +1,17 @@
 """Checks the hand-derived backward pass against numerical gradients from finite
-differences, and a couple of basic sanity properties of the forward pass.
+differences, a couple of basic sanity properties of the forward pass, and the core
+claim of the project as the multi-seed rigor sweep actually shows it.
 """
+import re
+from pathlib import Path
+
 import numpy as np
 import pytest
 
 from model import backward, cross_entropy_loss, forward, init_params
+
+RESULTS_DIR = Path(__file__).resolve().parents[1] / "results"
+RIGOR_LOG = RESULTS_DIR / "rigor.log"
 
 N_LAYERS = 2
 D_MODEL = 4
@@ -84,6 +91,131 @@ def test_forward_output_shape_and_causality():
     tokens_perturbed[:, -1] = (tokens_perturbed[:, -1] + 1) % VOCAB_SIZE
     logits_perturbed = forward(params, tokens_perturbed, cache=False)
     np.testing.assert_allclose(logits[:, 0, :], logits_perturbed[:, 0, :])
+
+
+SEED_HEADER_RE = re.compile(r"^=== seed model=(\d+) train=(\d+) ===$")
+FINAL_COINCIDENTAL_RE = re.compile(r"^  final coincidental accuracy: (\d+\.\d+)$")
+ABOVE_CHANCE_RE = re.compile(r"^seeds above chance \((\d+\.\d+)\): (\d+)/(\d+)$")
+ABOVE_BASELINE_RE = re.compile(
+    r"^seeds above trained 1-layer baseline \((\d+\.\d+)\): (\d+)/(\d+)$")
+CORE_CLAIM_CHANCE_RE = re.compile(
+    r"^core_claim: coincidental induction above chance is (reliable|not reliable) "
+    r"across seeds \((\d+)/(\d+)\)$")
+CORE_CLAIM_BASELINE_RE = re.compile(
+    r"^core_claim: coincidental induction above the trained 1-layer baseline is "
+    r"(reliable|not reliable) across seeds \((\d+)/(\d+)\)$")
+LEAKAGE_RE = re.compile(r"^leakage_check: collisions=(\d+) -> (CLEAN|LEAK DETECTED)$")
+
+
+def parse_rigor_log(path=RIGOR_LOG):
+    """Parses results/rigor.log (produced by `python src/rigor.py`, a sweep training
+    the 2-layer model across several seeds) rather than retraining inside the test
+    suite -- the sweep takes over a minute, which would make pytest too slow to run
+    routinely. This still checks real, committed numbers: if src/rigor.py is rerun and
+    the log changes, this test checks the new log, not a value frozen at authoring
+    time.
+    """
+    seeds = []
+    final_coincidental = []
+    above_chance = None
+    above_baseline = None
+    core_claim_chance = None
+    core_claim_baseline = None
+    leakage = None
+
+    for line in path.read_text().splitlines():
+        m = SEED_HEADER_RE.match(line)
+        if m:
+            seeds.append((int(m.group(1)), int(m.group(2))))
+            continue
+        m = FINAL_COINCIDENTAL_RE.match(line)
+        if m:
+            final_coincidental.append(float(m.group(1)))
+            continue
+        m = ABOVE_CHANCE_RE.match(line)
+        if m:
+            above_chance = (float(m.group(1)), int(m.group(2)), int(m.group(3)))
+            continue
+        m = ABOVE_BASELINE_RE.match(line)
+        if m:
+            above_baseline = (float(m.group(1)), int(m.group(2)), int(m.group(3)))
+            continue
+        m = CORE_CLAIM_CHANCE_RE.match(line)
+        if m:
+            core_claim_chance = (m.group(1), int(m.group(2)), int(m.group(3)))
+            continue
+        m = CORE_CLAIM_BASELINE_RE.match(line)
+        if m:
+            core_claim_baseline = (m.group(1), int(m.group(2)), int(m.group(3)))
+            continue
+        m = LEAKAGE_RE.match(line)
+        if m:
+            leakage = (int(m.group(1)), m.group(2))
+
+    return {
+        "seeds": seeds,
+        "final_coincidental": final_coincidental,
+        "above_chance": above_chance,
+        "above_baseline": above_baseline,
+        "core_claim_chance": core_claim_chance,
+        "core_claim_baseline": core_claim_baseline,
+        "leakage": leakage,
+    }
+
+
+def test_rigor_log_uses_at_least_three_seeds():
+    log = parse_rigor_log()
+    assert len(log["seeds"]) >= 3
+    assert len(log["final_coincidental"]) == len(log["seeds"])
+
+
+def test_no_training_batch_leaks_into_the_eval_batch():
+    log = parse_rigor_log()
+    collisions, verdict = log["leakage"]
+    assert collisions == 0
+    assert verdict == "CLEAN"
+
+
+def test_core_claim_coincidental_induction_reliably_above_chance_across_seeds():
+    """After training, coincidental-position induction accuracy (the metric that
+    isolates genuine content-based composition from the positional shortcut a model
+    can exploit at fixed-offset positions) clears chance in every seed. Checked two
+    ways -- src/rigor.py's own logged verdict, and an independent recomputation from
+    the parsed per-seed final accuracies, so a bug in how src/rigor.py prints its
+    verdict can't silently pass this test.
+    """
+    log = parse_rigor_log()
+    verdict, n_above, n_seeds = log["core_claim_chance"]
+    assert n_seeds == len(log["seeds"])
+    assert verdict == "reliable"
+    assert n_above == n_seeds
+
+    chance, logged_n_above, logged_n_seeds = log["above_chance"]
+    assert (logged_n_above, logged_n_seeds) == (n_above, n_seeds)
+    recomputed_n_above = sum(1 for acc in log["final_coincidental"] if acc > chance)
+    assert recomputed_n_above == n_seeds
+
+
+def test_core_claim_does_not_reliably_beat_the_1layer_baseline():
+    """The 2-layer model's coincidental induction accuracy turns out statistically
+    indistinguishable from the trained 1-layer baseline's (results/baseline.log)
+    across seeds, not reliably higher -- checked honestly here rather than assumed.
+    The 1-layer baseline itself does not perform genuine content-based induction (see
+    results/baseline.log), so this is a negative result about the 2-layer model's
+    composition mechanism, not a redefinition of what "beats the baseline" means.
+    Checked two ways, as above.
+    """
+    log = parse_rigor_log()
+    verdict, n_above, n_seeds = log["core_claim_baseline"]
+    assert n_seeds == len(log["seeds"])
+    assert verdict == "not reliable"
+    assert n_above < n_seeds
+
+    baseline_value, logged_n_above, logged_n_seeds = log["above_baseline"]
+    assert (logged_n_above, logged_n_seeds) == (n_above, n_seeds)
+    recomputed_n_above = sum(1 for acc in log["final_coincidental"] if acc > baseline_value)
+    assert recomputed_n_above == n_above
+    assert recomputed_n_above < n_seeds
 
 
 if __name__ == "__main__":
